@@ -51,8 +51,9 @@ public class RessourceAlimAgri {
 	@Column(name="image_url")
 	private String image_url;
 	
+	@Column(name="croisement")
+	private String croisement;
 	
-
 	
 	public long getId() {
 		return id;
@@ -157,6 +158,14 @@ public class RessourceAlimAgri {
 
 	public void setDistribution(String distribution) {
 		this.distribution = distribution;
+	}
+
+	public String getCroisement() {
+		return croisement;
+	}
+
+	public void setCroisement(String croisement) {
+		this.croisement = croisement;
 	}
 
 }
