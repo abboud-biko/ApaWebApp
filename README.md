@@ -2,7 +2,7 @@
 * Web application for access and sharing genetic resources
 # App Initialisation
 * Go to start.spring.io
-* For more details about project informations and dependencies take a look in the tow images in the git repo:
+* For more details about project informations and dependencies take a look to the two images in the git repo:
 *   1- Spring Initilizer
 *   2- Dependencies
 * When you download the project folder switch the src file by the one in the git repository.
