@@ -8,6 +8,7 @@ For more details about project informations and dependencies take a look in the 
 When you download the project folder switch the src file by the one in the git repository.
 # Database Config
 1- postgres running port: 5432
+------------------------------
 2- create "ApaDB" database.
 3- user: postgres
 4- password: postgres
