@@ -20,8 +20,10 @@ import com.softgen.apawebapp.repository.RessourceFauneRepository;
 import com.softgen.apawebapp.repository.RessourceForestiereRepository;
 import com.softgen.apawebapp.repository.RessourceMarineRepository;
 
+
 @Controller
-public class LocalisationController {
+
+public class localisationController {
 
 	@Autowired
     private RessourceForestiereRepository ressourceForestiereRepository;
@@ -37,7 +39,7 @@ public class LocalisationController {
 	@RequestMapping(value="/ressource/forestiere/{id}/localisations", method=RequestMethod.GET)
 	public ModelAndView ressourceForestierePartiesUtilise(@PathVariable("id") long id) {
 		ModelAndView model = new ModelAndView("ressources/localisations");
-		RessourceForestiere ressourceDetail = ressourceForestiereRepository.findOne(id);
+		RessourceForestiere ressourceDetail = ressourceForestiereRepository.findById(id);
 		List<Localisation> localisations = localisationRepository.findByRessourceForestiere(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("localisations", localisations);
@@ -47,7 +49,7 @@ public class LocalisationController {
 	@RequestMapping(value="/ressource/marine/{id}/localisations", method=RequestMethod.GET)
 	public ModelAndView ressourceMarinePartiesUtilise(@PathVariable("id") long id) {
 		ModelAndView model = new ModelAndView("ressources/localisations");
-		RessourceMarine ressourceDetail = ressourceMarineRepository.findOne(id);
+		RessourceMarine ressourceDetail = ressourceMarineRepository.findById(id);
 		List<Localisation> localisations = localisationRepository.findByRessourceMarine(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("localisations", localisations);
@@ -57,7 +59,7 @@ public class LocalisationController {
 	@RequestMapping(value="/ressource/faune/{id}/localisations", method=RequestMethod.GET)
 	public ModelAndView ressourceFaunePartiesUtilise(@PathVariable("id") long id) {
 		ModelAndView model = new ModelAndView("ressources/localisations");
-		RessourceFaune ressourceDetail = ressourceFauneRepository.findOne(id);
+		RessourceFaune ressourceDetail = ressourceFauneRepository.findById(id);
 		List<Localisation> localisations = localisationRepository.findByRessourceFaune(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("localisations", localisations);
@@ -67,7 +69,7 @@ public class LocalisationController {
 	@RequestMapping(value="/ressource/alim-agri/{id}/localisations", method=RequestMethod.GET)
 	public ModelAndView ressourceAlimAgriPartiesUtilise(@PathVariable("id") long id) {
 		ModelAndView model = new ModelAndView("ressources/localisations");
-		RessourceAlimAgri ressourceDetail = ressourceAlimAgriRepository.findOne(id);
+		RessourceAlimAgri ressourceDetail = ressourceAlimAgriRepository.findById(id);
 		List<Localisation> localisations = localisationRepository.findByRessourceAlimAgri(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("localisations", localisations);
@@ -86,19 +88,19 @@ public class LocalisationController {
 		List<Localisation> localisations = null;
 		switch (ressourceType) { 
         case "forestiere": 
-        	RessourceForestiere ressourceForestiere = ressourceForestiereRepository.findOne(id);
+        	RessourceForestiere ressourceForestiere = ressourceForestiereRepository.findById(id);
         	localisations = localisationRepository.findByRessourceForestiere(ressourceForestiere);
             break; 
         case "marine": 
-        	RessourceMarine ressourceMarine = ressourceMarineRepository.findOne(id);
+        	RessourceMarine ressourceMarine = ressourceMarineRepository.findById(id);
         	localisations = localisationRepository.findByRessourceMarine(ressourceMarine);
             break; 
         case "faune": 
-        	RessourceFaune ressourceFaune = ressourceFauneRepository.findOne(id);
+        	RessourceFaune ressourceFaune = ressourceFauneRepository.findById(id);
         	localisations = localisationRepository.findByRessourceFaune(ressourceFaune);
             break; 
         case "alim-agri": 
-        	RessourceAlimAgri ressourceAlimAgri = ressourceAlimAgriRepository.findOne(id);
+        	RessourceAlimAgri ressourceAlimAgri = ressourceAlimAgriRepository.findById(id);
         	localisations = localisationRepository.findByRessourceAlimAgri(ressourceAlimAgri);
             break;  
         }
@@ -129,22 +131,22 @@ public class LocalisationController {
 		ModelAndView model = new ModelAndView();
 		switch (ressourceType) { 
         case "forestiere": 
-        	RessourceForestiere ressourceForestiere = ressourceForestiereRepository.findOne(id);
+        	RessourceForestiere ressourceForestiere = ressourceForestiereRepository.findById(id);
         	localisation.setRessourceForestiere(ressourceForestiere);
         	model.setViewName("redirect:/localisations/administration/forestiere/"+id);
             break; 
         case "marine": 
-        	RessourceMarine ressourceMarine = ressourceMarineRepository.findOne(id);
+        	RessourceMarine ressourceMarine = ressourceMarineRepository.findById(id);
         	localisation.setRessourceMarine(ressourceMarine);
         	model.setViewName("redirect:/localisations/administration/marine/"+id);
             break;
         case "faune": 
-        	RessourceFaune ressourceFaune = ressourceFauneRepository.findOne(id);
+        	RessourceFaune ressourceFaune = ressourceFauneRepository.findById(id);
         	localisation.setRessourceFaune(ressourceFaune);
         	model.setViewName("redirect:/localisations/administration/faune/"+id);
             break; 
         case "alim-agri": 
-        	RessourceAlimAgri ressourceAlimAgri = ressourceAlimAgriRepository.findOne(id);
+        	RessourceAlimAgri ressourceAlimAgri = ressourceAlimAgriRepository.findById(id);
         	localisation.setRessourceAlimAgri(ressourceAlimAgri);
         	model.setViewName("redirect:/localisations/administration/alim-agri/"+id);
             break;  
@@ -156,7 +158,7 @@ public class LocalisationController {
 	 
 	@RequestMapping(value="/localisations/administration/{ressourceType}/{id}/delete/{locId}", method=RequestMethod.GET)
 	public ModelAndView deleteLocalisaition(@PathVariable("locId") long locId,@PathVariable("id") long id,@PathVariable("ressourceType") String ressourceType) {
-		localisationRepository.delete(locId);
+		localisationRepository.deleteById(locId);
 		ModelAndView model = new ModelAndView();
 		switch (ressourceType) { 
         case "forestiere": 

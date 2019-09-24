@@ -20,5 +20,7 @@ public interface PartieUtiliseRepository extends JpaRepository<PartieUtilise, Lo
 	public List<PartieUtilise> findByRessourceFaune(RessourceFaune ressourceFaune);
 
 	public List<PartieUtilise> findByRessourceAlimAgri(RessourceAlimAgri ressourceAlimAgri);
+
+	public void deleteById(long partieId);
 	
 }

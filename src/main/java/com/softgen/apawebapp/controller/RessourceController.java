@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import com.softgen.apawebapp.model.Image;
 import com.softgen.apawebapp.model.RessourceAlimAgri;
@@ -20,9 +21,9 @@ import com.softgen.apawebapp.repository.RessourceFauneRepository;
 import com.softgen.apawebapp.repository.RessourceForestiereRepository;
 import com.softgen.apawebapp.repository.RessourceMarineRepository;
 
-@Controller
-@RequestMapping(value="/ressource")
-public class RessourceController {
+
+@RestController
+public class ressourceController {
 
 	@Autowired
     private RessourceForestiereRepository ressourceForestiereRepository;
@@ -37,34 +38,34 @@ public class RessourceController {
 	
 	/** liste des ressources **/
 	
-	@RequestMapping(value="/forestiere", method=RequestMethod.GET)
+	@RequestMapping(value="/ressource/forestiere", method=RequestMethod.GET)
 	public ModelAndView ressoucesForestiereList() {
-		ModelAndView model = new ModelAndView("ressources/ressources_forestiere");
+		ModelAndView model = new ModelAndView("lot04_01forest");
 		List<RessourceForestiere> ressourceList = ressourceForestiereRepository.findAll();
 		model.addObject("ressourceList", ressourceList);	 
 		return model;
 	}
 	
-	@RequestMapping(value="/marine", method=RequestMethod.GET)
+	@RequestMapping(value="/ressource/marine", method=RequestMethod.GET)
 	public ModelAndView ressoucesMarineList() {
-		ModelAndView model = new ModelAndView("ressources/ressources_marine");
+		ModelAndView model = new ModelAndView("lot04_02marine");
 		List<RessourceMarine> ressourceList = ressourceMarineRepository.findAll();
 		model.addObject("ressourceList", ressourceList);	 
 		return model;
 	}
 	
-	@RequestMapping(value="/faune", method=RequestMethod.GET)
+	@RequestMapping(value="/ressource/faune", method=RequestMethod.GET)
 	public ModelAndView ressoucesFauneList() {
-		ModelAndView model = new ModelAndView("ressources/ressources_faune");
+		ModelAndView model = new ModelAndView("lot04_04wildlife");
 		List<RessourceFaune> ressourceList = ressourceFauneRepository.findAll();
 		model.addObject("ressourceList", ressourceList);	 
 		return model;
 	}
 	
-	@RequestMapping(value="/alim-agri", method=RequestMethod.GET)
+	@RequestMapping(value="/ressource/alim-agri", method=RequestMethod.GET)
 	public ModelAndView ressoucesAlimAgriList() {
-		ModelAndView model = new ModelAndView("ressources/ressources_alim_agri");
-		List<RessourceForestiere> ressourceList = ressourceForestiereRepository.findAll();
+		ModelAndView model = new ModelAndView("lot04_03agriculture");
+		List<RessourceAlimAgri> ressourceList = ressourceAlimAgriRepository.findAll();
 		model.addObject("ressourceList", ressourceList);	 
 		return model;
 	}
@@ -72,40 +73,40 @@ public class RessourceController {
 	
 	/** detail d'une ressource **/
 	
-	@RequestMapping(value="/forestiere/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/ressource/forestiere/{id}", method=RequestMethod.GET)
 	public ModelAndView ressourceForestiereDetail(@PathVariable("id") long id) {
-		ModelAndView model = new ModelAndView("ressources/ressource_forestiere_detail");
-		RessourceForestiere ressourceDetail = ressourceForestiereRepository.findOne(id);
+		ModelAndView model = new ModelAndView("lot04_01forest_details");
+		RessourceForestiere ressourceDetail = ressourceForestiereRepository.findById(id);
 		List<Image> images = imageRepository.findByRessourceForestiere(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("images", images);
 		return model;
 	}
 	
-	@RequestMapping(value="/marine/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/ressource/marine/{id}", method=RequestMethod.GET)
 	public ModelAndView ressourceMarineDetail(@PathVariable("id") long id) {
-		ModelAndView model = new ModelAndView("ressources/ressource_marine_detail");
-		RessourceMarine ressourceDetail = ressourceMarineRepository.findOne(id);
+		ModelAndView model = new ModelAndView("lot04_02marine_details");
+		RessourceMarine ressourceDetail = ressourceMarineRepository.findById(id);
 		List<Image> images = imageRepository.findByRessourceMarine(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("images", images);
 		return model;
 	}
 	
-	@RequestMapping(value="/faune/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/ressource/faune/{id}", method=RequestMethod.GET)
 	public ModelAndView ressourceFauneDetail(@PathVariable("id") long id) {
-		ModelAndView model = new ModelAndView("ressources/ressource_faune_detail");
-		RessourceFaune ressourceDetail = ressourceFauneRepository.findOne(id);
+		ModelAndView model = new ModelAndView("lot04_04wildlife_details");
+		RessourceFaune ressourceDetail = ressourceFauneRepository.findById(id);
 		List<Image> images = imageRepository.findByRessourceFaune(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("images", images);
 		return model;
 	}
 	
-	@RequestMapping(value="/alim-agri/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/ressource/alim-agri/{id}", method=RequestMethod.GET)
 	public ModelAndView ressourceAlimAgriDetail(@PathVariable("id") long id) {
-		ModelAndView model = new ModelAndView("ressources/ressource_alim_agri_detail");
-		RessourceAlimAgri ressourceDetail = ressourceAlimAgriRepository.findOne(id);
+		ModelAndView model = new ModelAndView("lot04_03agriculture_details");
+		RessourceAlimAgri ressourceDetail = ressourceAlimAgriRepository.findById(id);
 		List<Image> images = imageRepository.findByRessourceAlimAgri(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("images", images);
@@ -116,11 +117,20 @@ public class RessourceController {
 	//		ADMINISTRATION
 	// ########################
 	
+	/** Home page **/
+	
+	@RequestMapping(value="/administration", method=RequestMethod.GET)
+	public ModelAndView adminPage() {
+		ModelAndView model = new ModelAndView("index");	 
+		return model;
+	}
+	
+	
 	/** liste des ressources **/
 	
 	@RequestMapping(value="/administration/forestiere", method=RequestMethod.GET)
 	public ModelAndView adminRessoucesForestiereList() {
-		ModelAndView model = new ModelAndView("ressources_administration/admin_ressources_forestiere");
+		ModelAndView model = new ModelAndView("forest-table");
 		List<RessourceForestiere> ressourceList = ressourceForestiereRepository.findAll();
 		model.addObject("ressourceList", ressourceList);	 
 		return model;
@@ -128,7 +138,7 @@ public class RessourceController {
 	
 	@RequestMapping(value="/administration/marine", method=RequestMethod.GET)
 	public ModelAndView adminRessoucesMarineList() {
-		ModelAndView model = new ModelAndView("ressources_administration/admin_ressourcs_marine");
+		ModelAndView model = new ModelAndView("marin-table");
 		List<RessourceMarine> ressourceList = ressourceMarineRepository.findAll();
 		model.addObject("ressourceList", ressourceList);	 
 		return model;
@@ -136,7 +146,7 @@ public class RessourceController {
 	
 	@RequestMapping(value="/administration/faune", method=RequestMethod.GET)
 	public ModelAndView adminRessoucesFauneList() {
-		ModelAndView model = new ModelAndView("ressources_administration/admin_ressources_faune");
+		ModelAndView model = new ModelAndView("wildlife-table");
 		List<RessourceFaune> ressourceList = ressourceFauneRepository.findAll();
 		model.addObject("ressourceList", ressourceList);	 
 		return model;
@@ -144,7 +154,7 @@ public class RessourceController {
 	
 	@RequestMapping(value="/administration/alim-agri", method=RequestMethod.GET)
 	public ModelAndView adminRessoucesAlimAgriList() {
-		ModelAndView model = new ModelAndView("ressources_administration/admin_ressources_alim_agri");
+		ModelAndView model = new ModelAndView("agricultur-table");
 		List<RessourceForestiere> ressourceList = ressourceForestiereRepository.findAll();
 		model.addObject("ressourceList", ressourceList);	 
 		return model;
@@ -157,7 +167,7 @@ public class RessourceController {
 		ModelAndView model = new ModelAndView();
 		RessourceForestiere ressourceForestiere = new RessourceForestiere();
 		model.addObject("ressourceForestiere", ressourceForestiere);
-		model.setViewName("ressource_forestiere_form");
+		model.setViewName("form");
 		return model;
 	}
 	
@@ -195,7 +205,7 @@ public class RessourceController {
 		ModelAndView model = new ModelAndView(); 
 		RessourceForestiere ressourceForestiere = ressourceForestiereRepository.getOne(id);
 		model.addObject("ressourceForestiere", ressourceForestiere);
-		model.setViewName("ressources_administration/ressource_forestiere_form");
+		model.setViewName("form");
 		return model;
 	}
 	
@@ -231,7 +241,7 @@ public class RessourceController {
 	@RequestMapping(value="/administration/forestiere/save", method=RequestMethod.POST)
 	public ModelAndView saveRessourceForestiere(@ModelAttribute("ressourceForistere") RessourceForestiere ressourceForestiere) {
 		ressourceForestiereRepository.save(ressourceForestiere);
-		return new ModelAndView("redirect:/ressource/administration/forestiere");
+		return new ModelAndView("redirect:/administration/forestiere");
 	}
 	
 	@RequestMapping(value="/administration/marine/save", method=RequestMethod.POST)
@@ -258,26 +268,26 @@ public class RessourceController {
 	public ModelAndView deleteRessourceForestiere(@PathVariable("id") long id) {
 		ressourceForestiereRepository.delete(id);	  
 		
-		return new ModelAndView("redirect:/ressource/administration/forestiere");
+		return new ModelAndView("redirect:/administration/forestiere");
 	}
 	
 	@RequestMapping(value="/administration/marine/delete/{id}", method=RequestMethod.GET)
 	public ModelAndView deleteRessourceMarine(@PathVariable("id") long id) {
-		ressourceMarineRepository.delete(id);	  
+		ressourceMarineRepository.deleteById(id);	  
 		
 		return new ModelAndView("redirect:/ressource/administration/marine");
 	}
 	
 	@RequestMapping(value="/administration/faune/delete/{id}", method=RequestMethod.GET)
 	public ModelAndView deleteRessourceFaune(@PathVariable("id") long id) {
-		ressourceFauneRepository.delete(id);	  
+		ressourceFauneRepository.deleteById(id);	  
 		
 		return new ModelAndView("redirect:/ressource/administration/faune");
 	}
 	
 	@RequestMapping(value="/administration/alim-agri/delete/{id}", method=RequestMethod.GET)
 	public ModelAndView deleteRessourceAlimAgri(@PathVariable("id") long id) {
-		ressourceAlimAgriRepository.delete(id);	  
+		ressourceAlimAgriRepository.deleteById(id);	  
 		
 		return new ModelAndView("redirect:/ressource/administration/alim-agri");
 	}

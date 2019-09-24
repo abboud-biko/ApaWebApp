@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head th:replace="fragments/head :: head( title='Details dune ressources forestieres' )">
+    </head>
+    <body>
+      <nav th:replace="fragments/nav :: nav"></nav>
+
+      <section class="section resources-details_header forest_header">
+        <div class="header-overlay"></div>
+        <div class="content_header center">
+          <h2 th:text="'Details de la ressource : ' + ${ressourceDetail.nom_scientifique }"></h2>
+        </div>
+      </section>
+
+      <section class="forest_details_content">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-8">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="card-header" th:style="'background:url(' + @{'/img/'+${ressourceDetail.image_url}} + ');background-size:cover'">
+                   	</div>
+                    <div class="info-block margin">
+                      <h5>Description</h5>
+                      <p th:text="${ressourceDetail.discription}"></p>
+                    </div>
+                    <div class="info-block margin">
+                      <h5>Distribution</h5><br />
+                      <p th:text="${ressourceDetail.distribution}"></p>
+                    </div>
+                    <div class="info-block margin">
+                      <a th:href="'/ressource/forestiere/'+${ressourceDetail.id}+'/parties-utilisees'"><h5>Utilisations</h5></a>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="info-block margin flex-row">
+                      <h5>Nom Local: </h5>
+                      <p th:text="${ressourceDetail.nom_commun }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Nom Scientifique: </h5>
+                      <p th:text="${ressourceDetail.nom_scientifique }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Regne: </h5>
+                      <p th:text="${ressourceDetail.regne }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Division: </h5>
+                      <p th:text="${ressourceDetail.division }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Classe: </h5>
+                      <p th:text="${ressourceDetail.classe }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Espèce: </h5>
+                      <p th:text="${ressourceDetail.espece }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Ordre: </h5>
+                      <p th:text="${ressourceDetail.ordre }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Famille: </h5>
+                      <p th:text="${ressourceDetail.famille }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Genre: </h5>
+                      <p th:text="${ressourceDetail.genre }"></p>
+                    </div>
+                    <div class="info-block margin flex-row">
+                      <h5>Longueur de la plante: </h5>
+                      <p th:text="${ressourceDetail.plante_longueur }"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+<footer th:replace="fragments/footer :: footer"></footer>
+        <script src="/js/vendor/jquery-1.11.2.min.js" ></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>

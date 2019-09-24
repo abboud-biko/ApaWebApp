@@ -7,4 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RessourceMarineRepository extends JpaRepository<RessourceMarine, Long> {
+
+	public RessourceMarine findById(long id);
+
+	public void deleteById(long id);
 }

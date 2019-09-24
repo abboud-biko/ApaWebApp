@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RessourceAlimAgriRepository extends JpaRepository<RessourceAlimAgri, Long> {
+
+	public RessourceAlimAgri findById(long id);
+
+	public void deleteById(long id);
 }

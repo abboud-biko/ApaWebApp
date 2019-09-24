@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head th:replace="fragments/head :: head( title='Ressources Marines' )">
+    </head>
+    <body>
+      <nav th:replace="fragments/nav :: nav"></nav>
+
+      <section class="section resources_header marine_header">
+        <div class="header-overlay"></div>
+        <div class="content_header center">
+          <h2>Ressources Genetiques Marines</h2>
+          <!-- Actual search box -->
+          <div class="input-group margin">
+            <input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
+            <span class="input-group-append">
+              <button class="btn button-secondary btn-outline-secondary border-left-0 border" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+          <h5 class="text-center margin">Ressources Genetiques Marines</h5>
+          <div class="container" >
+                       <div class="row">
+             <div th:each="ressource: ${ressourceList}" class="col-sm">
+                <div class="card center" style="width: 18rem;">
+                  <div class="card-header" th:style="'background:url(' + @{'/img/'+${ressource.getImage_url()}} + ');background-size:cover'" alt="Card image cap"></div>
+                  <div class="card-body">
+                    <h6 class="card-title" th:text="${ressource.getNom_commun() }"></h6>
+                    <div style="height:195px;overflow: hidden;">
+                    <p class="card-text" th:text="${ressource.getDiscription() }"></p>
+                    </div>
+                    <a th:href="@{/ressource/marine/{id}(id=${ressource.getId()})}" class="btn btn-light">Details</a>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+          <button class="btn button-tertiary center">Consulter toutes les ressources</button>
+      </section>
+
+      <footer th:replace="fragments/footer :: footer"></footer>
+        <script src="/js/vendor/jquery-1.11.2.min.js" ></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>

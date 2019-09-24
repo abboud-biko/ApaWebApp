@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head th:replace="fragments/head :: head( title='Parties Utilisees' )">
+    </head>
+    <body>
+      <nav th:replace="fragments/nav :: nav"></nav>
+
+      <section class="section resources-details_header forest_header" style="background-image: url('/img/partused.jpg'); background-position: center;">
+        <div class="header-overlay"></div>
+        <div class="content_header center">
+          <h2 th:text="'Parties Utilisees - '+${ressourceDetail.nom_commun}"></h2>
+        </div>
+      </section>
+
+      <section class="forest_details_content">
+          <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div  th:each="partie: ${partiesUtilisees}" class="info-block margin" style="margin-bottom: 100px">
+                        <div>
+                            <h5>Nom:</h5>
+                            <p th:text="${partie.nom}"></p>
+                        </div>
+                        <div>
+                            <h5>Description:</h5>
+                            <p th:text="${partie.description}"></p>
+                        </div>
+                        <div>
+                            <h5>Composition chimique:</h5>
+                            <p th:text="${partie.compositionChimique}"></p>
+                        </div>
+                        <img th:src="'/img/'+${partie.imageUrl}" width="400" height="315"/>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </section>
+
+      <footer th:replace="fragments/footer :: footer"></footer>
+        <script src="/js/vendor/jquery-1.11.2.min.js" ></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>

@@ -20,9 +20,10 @@ import com.softgen.apawebapp.repository.RessourceFauneRepository;
 import com.softgen.apawebapp.repository.RessourceForestiereRepository;
 import com.softgen.apawebapp.repository.RessourceMarineRepository;
 
+
 @Controller
 @RequestMapping
-public class PartieUtiliseController {
+public class partieUtiliseController {
 
 	@Autowired
     private RessourceForestiereRepository ressourceForestiereRepository;
@@ -37,8 +38,8 @@ public class PartieUtiliseController {
 	
 	@RequestMapping(value="/ressource/forestiere/{id}/parties-utilisees", method=RequestMethod.GET)
 	public ModelAndView ressourceForestierePartiesUtilise(@PathVariable("id") long id) {
-		ModelAndView model = new ModelAndView("ressources/parties_utilisees_forestiere");
-		RessourceForestiere ressourceDetail = ressourceForestiereRepository.findOne(id);
+		ModelAndView model = new ModelAndView("used_parts");
+		RessourceForestiere ressourceDetail = ressourceForestiereRepository.findById(id);
 		List<PartieUtilise> partiesUtilisees = partieUtiliseRepository.findByRessourceForestiere(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("partiesUtilisees", partiesUtilisees);
@@ -47,8 +48,8 @@ public class PartieUtiliseController {
 	
 	@RequestMapping(value="/ressource/marine/{id}/parties-utilisees", method=RequestMethod.GET)
 	public ModelAndView ressourceMarinePartiesUtilise(@PathVariable("id") long id) {
-		ModelAndView model = new ModelAndView("ressources/parties_utilisees_marine");
-		RessourceMarine ressourceDetail = ressourceMarineRepository.findOne(id);
+		ModelAndView model = new ModelAndView("used_parts");
+		RessourceMarine ressourceDetail = ressourceMarineRepository.findById(id);
 		List<PartieUtilise> partiesUtilisees = partieUtiliseRepository.findByRessourceMarine(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("partiesUtilisees", partiesUtilisees);
@@ -57,8 +58,8 @@ public class PartieUtiliseController {
 	
 	@RequestMapping(value="/ressource/faune/{id}/parties-utilisees", method=RequestMethod.GET)
 	public ModelAndView ressourceFaunePartiesUtilise(@PathVariable("id") long id) {
-		ModelAndView model = new ModelAndView("ressources/parties_utilisees_faune");
-		RessourceFaune ressourceDetail = ressourceFauneRepository.findOne(id);
+		ModelAndView model = new ModelAndView("used_parts");
+		RessourceFaune ressourceDetail = ressourceFauneRepository.findById(id);
 		List<PartieUtilise> partiesUtilisees = partieUtiliseRepository.findByRessourceFaune(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("partiesUtilisees", partiesUtilisees);
@@ -67,8 +68,8 @@ public class PartieUtiliseController {
 	
 	@RequestMapping(value="/ressource/alim-agri/{id}/parties-utilisees", method=RequestMethod.GET)
 	public ModelAndView ressourceAlimAgriPartiesUtilise(@PathVariable("id") long id) {
-		ModelAndView model = new ModelAndView("ressources/parties_utilisees_alim_agri");
-		RessourceAlimAgri ressourceDetail = ressourceAlimAgriRepository.findOne(id);
+		ModelAndView model = new ModelAndView("used_parts");
+		RessourceAlimAgri ressourceDetail = ressourceAlimAgriRepository.findById(id);
 		List<PartieUtilise> partiesUtilisees = partieUtiliseRepository.findByRessourceAlimAgri(ressourceDetail);
 		model.addObject("ressourceDetail", ressourceDetail);
 		model.addObject("partiesUtilisees", partiesUtilisees);
@@ -87,20 +88,20 @@ public class PartieUtiliseController {
 		ModelAndView model = new ModelAndView("ressources_administration/admin_parties_utilisees");
 		List<PartieUtilise> partiesUtilisees = null;
 		switch (ressourceType) { 
-        case "forestiere": 
+        /*case "forestiere": 
         	RessourceForestiere ressourceForestiere = ressourceForestiereRepository.findOne(id);
         	partiesUtilisees = partieUtiliseRepository.findByRessourceForestiere(ressourceForestiere);
-            break; 
+            break; */
         case "marine": 
-        	RessourceMarine ressourceMarine = ressourceMarineRepository.findOne(id);
+        	RessourceMarine ressourceMarine = ressourceMarineRepository.findById(id);
         	partiesUtilisees = partieUtiliseRepository.findByRessourceMarine(ressourceMarine);
             break; 
         case "faune": 
-        	RessourceFaune ressourceFaune = ressourceFauneRepository.findOne(id);
+        	RessourceFaune ressourceFaune = ressourceFauneRepository.findById(id);
         	partiesUtilisees = partieUtiliseRepository.findByRessourceFaune(ressourceFaune);
             break; 
         case "alim-agri": 
-        	RessourceAlimAgri ressourceAlimAgri = ressourceAlimAgriRepository.findOne(id);
+        	RessourceAlimAgri ressourceAlimAgri = ressourceAlimAgriRepository.findById(id);
         	partiesUtilisees = partieUtiliseRepository.findByRessourceAlimAgri(ressourceAlimAgri);
             break;  
         }
@@ -141,23 +142,23 @@ public class PartieUtiliseController {
 		
 		ModelAndView model = new ModelAndView();
 		switch (ressourceType) { 
-        case "forestiere": 
+       /* case "forestiere": 
         	RessourceForestiere ressourceForestiere = ressourceForestiereRepository.findOne(id);
         	partieUtilise.setRessourceForestiere(ressourceForestiere);
         	model.setViewName("redirect:/parties-utilisees/administration/forestiere/"+id);
-            break; 
+            break; */
         case "marine": 
-        	RessourceMarine ressourceMarine = ressourceMarineRepository.findOne(id);
+        	RessourceMarine ressourceMarine = ressourceMarineRepository.findById(id);
         	partieUtilise.setRessourceMarine(ressourceMarine);
         	model.setViewName("redirect:/parties-utilisees/administration/marine/"+id);
             break;
         case "faune":
-        	RessourceFaune ressourceFaune = ressourceFauneRepository.findOne(id);
+        	RessourceFaune ressourceFaune = ressourceFauneRepository.findById(id);
         	partieUtilise.setRessourceFaune(ressourceFaune);
         	model.setViewName("redirect:/parties-utilisees/administration/faune/"+id);
             break; 
         case "alim-agri":
-        	RessourceAlimAgri ressourceAlimAgri = ressourceAlimAgriRepository.findOne(id);
+        	RessourceAlimAgri ressourceAlimAgri = ressourceAlimAgriRepository.findById(id);
         	partieUtilise.setRessourceAlimAgri(ressourceAlimAgri);
         	model.setViewName("redirect:/parties-utilisees/administration/alim-agri/"+id);
             break;  
@@ -170,7 +171,7 @@ public class PartieUtiliseController {
 	 
 	@RequestMapping(value="/parties-utilisees/administration/{ressourceType}/{id}/delete/{partieId}", method=RequestMethod.GET)
 	public ModelAndView deleteLocalisaition(@PathVariable("partieId") long partieId,@PathVariable("id") long id,@PathVariable("ressourceType") String ressourceType) {
-		partieUtiliseRepository.delete(partieId);
+		partieUtiliseRepository.deleteById(partieId);
 		ModelAndView model = new ModelAndView();
 		switch (ressourceType) { 
         case "forestiere": 

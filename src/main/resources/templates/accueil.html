@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+    <head th:replace="fragments/head :: head( title='Accueil' )">
+    </head>
+    <body>
+      <nav th:replace="fragments/nav :: nav"></nav>
+
+      <section class="section slider">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div class="slider-overlay"></div>
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="/img/slider/1.jpg" alt="First slide">
+              <div class="carousel-caption d-none d-md-block">
+                <h1>Demarche pionniere</h1>
+                <p>L’affaire concerne une plante</p>
+                <a href="#" class="btn btn-light">Details</a>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/img/slider/2.jpg" alt="Second slide">
+              <div class="carousel-caption d-none d-md-block">
+                <h1>Scandale du couachi </h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a href="#" class="btn btn-light">Details</a>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/img/slider/3.jpg" alt="Third slide">
+              <div class="carousel-caption d-none d-md-block">
+                <h1>Cas du Costa Rica</h1>
+                <p>Le Costa Rica ne couvre peut-être que 0.04% de la planete</p>
+                <a href="#" class="btn btn-light">Details</a>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section video-section text-center">
+        <div class="container">
+          <div style="margin-bottom: 40px">
+            <h5 class="text-center" style="margin-bottom: 20px">Bienvenu dans le Site de l'APA</h5>
+            <p>Apres l’Union europeenne en 2014, la France traduit aujourd’hui dans son droit le Protocole de Nagoya sur l’acces aux ressources genetiques et le partage des avantages decoulant de leur utilisation (APA), avec l’adoption de la loi pour la reconquête de la biodiversite, de la nature et des paysages et son decret d’application.</p>
+          </div>
+          <div style="margin-bottom: 40px">
+            <h5 class="text-center" style="margin-bottom: 20px">Pourquoi les ressources genetiques sont tres improtantes?</h5>
+            <iframe width="640" height="480"
+              src="https://www.youtube.com/embed/6TirvSnD-rQ">
+            </iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="section respo-text-section">
+        <div class="overlay"></div>
+        <div class="container" style="color: #fff">
+          <div class="row">
+            <div class="col-12">
+              <h5 class="text-center">Notre mission, notre vision!</h5>
+            </div>
+            <div class="col-12 col-sm-2"></div>
+            <div class="col-12 col-sm-3">
+              <img src="/img/resposible-photo.png" style="width: 100%"/>
+            </div>
+            <div class="col-12 col-sm-5" style="justify-content: center">
+              <div style="margin-top: 30px;">
+                <h6>Kenza ARAB, Responsable de l'APA Algerie</h6>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                  Unde voluptatem dicta aliquam commodi ducimus assumenda asperiores 
+                  exercitationem quae voluptatum quas. Doloribus ipsum aspernatur impedit voluptatum. 
+                  Rerum est dolor eum voluptatum.</p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-2"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h5 class="text-center margin">Les Categories de Ressources</h5>
+          <div class="row" style="color: #fff">
+            <div class="col-12 col-sm-6">
+              <div class="card-header" style="background-image: url('/img/lot04_forest_header.jpg'); margin: 10px; padding: 40px">
+                <span style="background-color: #91c83e;">Ressources Forestieres</span>
+                <button class="btn button" style="display: block; margin-top: 10px;">Details</button>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="card-header" style="background-image: url('/img/lot04_marine_header.jpg'); margin: 10px; padding: 40px">
+                <span style="background-color: #4cbbcd;">Ressources Marines</span>
+                <button class="btn button-secondary" style="display: block; margin-top: 10px;">Details</button>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="card-header" style="background-image: url('/img/lot04_agriculture_header.jpg'); margin: 10px; padding: 40px">
+                <span style="background-color: #16a085;">Ressources pour l'Alimentation et l'Agriculture</span>
+                <button class="btn button-tertiary" style="display: block; margin-top: 10px;">Details</button>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="card-header" style="background-image: url('/img/lot04_wildlife_header.jpg'); margin: 10px; padding: 40px">
+                <span style="background-color: #e67e22;">Ressources de la Faune Sauvage et Domestique</span>
+                <button class="btn button-quaternary" style="display: block; margin-top: 10px;">Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="position: relative; margin: 40px 0; padding: 100px 0;background-image: url('/img/respo_BG.jpg');background-attachment: fixed; background-size: cover">
+        <div class="overlay"></div>
+        <div style="position: relative;">
+          <h5 class="text-center margin" style="color: #fff">Les Nouvelles Ressources</h5>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <div class="card center" style="width: 18rem;">
+                  <div class="card-header" style="background-image: url('/img/forest/forest_01.jpg')" alt="Card image cap"></div>
+                  <div class="card-body">
+                    <h6 class="card-title">Ressource 01</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-light">Details</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="card center" style="width: 18rem;">
+                  <div class="card-header" style="background-image: url('/img/forest/forest_02.jpg')" alt="Card image cap"></div>
+                  <div class="card-body">
+                    <h6 class="card-title">Ressource 02</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-light">Details</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="card center" style="width: 18rem;">
+                  <div class="card-header" style="background-image: url('/img/forest/forest_03.jpg')" alt="Card image cap"></div>
+                  <div class="card-body">
+                    <h6 class="card-title">Ressource 03</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-light">Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn button center">Consulter toutes les ressources</button>
+        </div> 
+      </section>
+
+      <div class="section">
+        <div class="container">
+          <h5 class="text-center margin">Les derniers articles</h5>
+          <div class="card mb-3">
+            <img class="card-img-top" src="./img/blog01.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title" style="display: block">Demarche pionniere</h5>
+              <p class="card-text" style="display: block">Mis en application le 1er juillet 2017, le decret sur l’acces aux ressources genetiques et le partage de leurs avantages est une avancee dans la lutte pour la preservation de la biodiversite et la protection des savoirs locaux des populations.</p>
+              <p class="card-text"><small class="text-muted">Derniere mis à jour il y a 16h</small></p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <img class="card-img-top" src="./img/blog02.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title" style="display: block">Scandale du couachi</h5>
+              <p class="card-text" style="display: block">Janvier 2016. Les medias regionaux titrent “  Biopiraterie en Guyane ”. L’affaire concerne une plante</p>
+              <p class="card-text"><small class="text-muted">Derniere mis à jour il y a 20h</small></p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <img class="card-img-top" src="./img/blog03.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title" style="display: block">Cas du Costa Rica</h5>
+              <p class="card-text" style="display: block">Le Costa Rica ne couvre peut-être que 0.04% de la planete mais il abrite 4 à 5% de la biodiversite terrestre, soit un demi-million d’especes vegetales et animales.
+                </p>
+              <p class="card-text"><small class="text-muted">Derniere mis à jour il y a 3 jours</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section pb-5">
+        <div class="container">
+          <!--Section heading-->
+          <h2 class="section-heading h1 pt-4">Contact us</h2>
+        
+          <div class="row">
+        
+            <!--Grid column-->
+            <div class="col-lg-5 mb-4">
+        
+              <!--Form with header-->
+              <div class="card">
+        
+                <div class="card-body">
+                  <!--Header-->
+                  <div class="form-header blue accent-1">
+                    <h3> Contactez-nous:</h3>
+                  </div>
+                  <br>
+        
+                  <!--Body-->
+                  <div class="md-form">
+                    <label for="form-name">Nom Complet</label>
+                    <input type="text" id="form-name" class="form-control">
+                    
+                  </div>
+        
+                  <div class="md-form">
+                    <label for="form-email">Adresse mail</label>
+                    <input type="text" id="form-email" class="form-control">
+                  </div>
+        
+                  <div class="md-form">
+                    <label for="form-Subject">Sujet</label>
+                    <input type="text" id="form-Subject" class="form-control">
+                  </div>
+        
+                  <div class="md-form">
+                    <label for="form-text">Texte</label>
+                    <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
+                    
+                  </div>
+        
+                  <div class="text-center mt-4">
+                    <button class="btn btn-success">Envoyer</button>
+                  </div>
+        
+                </div>
+        
+              </div>
+              <!--Form with header-->
+        
+            </div>
+            <!--Grid column-->
+        
+            <!--Grid column-->
+            <div class="col-lg-7">
+        
+              <!--Google map-->
+              <div id="map-container-google-11" class="z-depth-1-half map-container-6">
+                  <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                  style="border:0" allowfullscreen width="100%" height="450px"></iframe>
+              </div>
+        
+              <br>
+        
+            </div>
+            <!--Grid column-->
+        
+          </div>
+        </div>
+        </section>
+
+     <footer th:replace="fragments/footer :: footer"></footer>
+        <script src="/js/vendor/jquery-1.11.2.min.js" ></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>
